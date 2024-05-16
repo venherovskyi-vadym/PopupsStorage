@@ -33,7 +33,7 @@ public class PlayerPrefsJsonStorage<T> where T : class, new()
         }
 
         var json = PlayerPrefs.GetString(_key);
-        T data = null;
+        T data;
 
         try
         {
