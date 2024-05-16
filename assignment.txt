@@ -1,0 +1,24 @@
+Time: 2-3 hours
+Candidate name: 
+Delivery:
+- please submit answers as attachments
+- add your project solution 
+
+Questions
+1. Implement a generic util class that can save & load serializable classes into Unity’s PlayerPrefs
+2. Implement a generic or abstract TasksQueue class that gets Tasks and executes the tasks by order. What are the options for storing the tasks? What is the difference between the structures? (this is not a async Task, just a Task to run)
+3. Design a UML diagram for a Popup system that supports:
+	- The design should be based on MVC or other design principles
+	- You can use draw.io or other tools & take a screenshot
+	- Requirements:
+		- Loading a popup prefab from resources by asset name
+		- Setting between 1-3 buttons (e.g. main, secondary & exit)
+		- Setting the popup Title, Body and buttons
+Bonus:
+Allow displaying more that one popup at once, allow queueing popups
+
+4. Implement the pop-ups system that you design
+Requirements:	
+support a sequence of pop-ups(Pop-ups open one after the other) please check this video - Pop-ups sequence.mp4
+Bonus:
+multilayer pop-ups(pop up can open new pop-up, and we can return to the root pop-up)
