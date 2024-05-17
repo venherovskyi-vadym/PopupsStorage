@@ -71,9 +71,9 @@ public class PopupTask : ITask, ITaskFinish
             return;
         }
 
-        for (int i = 0; i < tasksToEnqueue.Count; i++)
+        for (int i = tasksToEnqueue.Count - 1; i >= 0; i--)
         {
-            _taskQueue.Enqueue(tasksToEnqueue[i]);
+            _taskQueue.InsertInFront(tasksToEnqueue[i]);
         }
     }
 }

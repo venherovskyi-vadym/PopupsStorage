@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 
 public class TaskQueue
 {
-    private QueuePlayerPrefsJsonStorage<ITask> _storage = new QueuePlayerPrefsJsonStorage<ITask>();
+    private IStorage<ITask> _storage = new TaskStorage<ITask>();
     private ITask _currentTask;
 
     public void Enqueue(ITask task)
@@ -15,18 +15,24 @@ public class TaskQueue
             return;
         }
 
-        _storage.Data.Enqueue(task);
+        _storage.Enqueue(task);
+        _storage.Save();
+    }
+
+    public void InsertInFront(ITask task)
+    {
+        _storage.InsertInFront(task);
     }
 
     private void CheckAndRun()
     {
-        if (_storage.Data.Count == 0)
+        if (!_storage.HasItem())
         {
             _currentTask = null;
             return;
         }
 
-        _currentTask = _storage.Data.Dequeue();
+        _currentTask = _storage.Dequeue();
         _currentTask.Run();
         _currentTask.WaitComplete().ContinueWith(CheckAndRun);
     }
