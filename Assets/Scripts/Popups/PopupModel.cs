@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class PopupModel : IPopupModel
 {
     public string RightButton { get; private set; }

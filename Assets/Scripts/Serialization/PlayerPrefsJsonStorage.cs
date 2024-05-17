@@ -55,5 +55,6 @@ public class PlayerPrefsJsonStorage<T> where T : class, new()
     public void Save()
     {
         PlayerPrefs.SetString(_key, JsonUtility.ToJson(_data));
+        PlayerPrefs.Save();
     }
 }

@@ -1,11 +1,12 @@
 using Cysharp.Threading.Tasks;
 using System;
 
+[Serializable]
 public class DelayTask : ITask, ITaskFinish
 {
     public string Name { get; }
     private readonly float _delay;
-    private UniTaskCompletionSource _completionSource;
+    [NonSerialized] private UniTaskCompletionSource _completionSource;
 
     public DelayTask(float delay)
     {

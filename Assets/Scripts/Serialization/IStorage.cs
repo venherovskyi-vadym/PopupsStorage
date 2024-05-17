@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public interface IStorage<T>
 {
     bool HasItem();
@@ -5,4 +7,5 @@ public interface IStorage<T>
     void InsertInFront(T item);
     T Dequeue();
     void Save();
+    List<T> GetData();
 }

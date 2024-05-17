@@ -1,9 +1,22 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class TaskQueue
 {
     private IStorage<ITask> _storage = new TaskStorage<ITask>();
     private ITask _currentTask;
+
+    public void InitLoadedTasks(Transform parent)
+    {
+        var data = _storage.GetData();
+        for (int i = 0; i < data.Count; i++)
+        {
+            if (data[i] is PopupTask popupTask)
+            {
+                popupTask.InitLoadedTask(parent, this);
+            }
+        }
+    }
 
     public void Enqueue(ITask task)
     {
@@ -33,6 +46,7 @@ public class TaskQueue
         }
 
         _currentTask = _storage.Dequeue();
+        _storage.Save();
         _currentTask.Run();
         _currentTask.WaitComplete().ContinueWith(CheckAndRun);
     }
